@@ -7,6 +7,7 @@
 
 - Learn basic HTML5, CSS and Javascript from scratch
 - No pre-requisite necessary
+- Won't teach you everything there is about Web Dev, but enough so you can explore on your own after the course
 
 ---
 
@@ -56,8 +57,8 @@
     <body>
       Welcome to Carl Fredricksen's Profile page!
       <img src='img/mugshot.jpg'>
-      Click <a href='http://pixar.wikia.com/wiki/Carl_Fredricksen'>here</a> to go to my wiki page.
-
+      Click <a href='http://pixar.wikia.com/wiki/Carl_Fredricksen'>here</a> 
+      to go to my wiki page.
     </body>
 
 - Tags have attributes (or properties), specified like `name='value'`
@@ -90,7 +91,7 @@
     </body>
 
 - 5 levels of headings: from `<h1>` to `<h5>`
-- `<p>` is used to organize text into paragraphs
+- `<p>` organizes text into paragraphs
 - `<em>` (emphasis) is for _italics_, `<strong>` is for **bold**
 
 ---
@@ -150,7 +151,7 @@
 
 .fx: imageslide
 
----
+-------------------------------------------------------------------------------
 
 # 2. CSS
 
@@ -195,12 +196,12 @@ Use the following structure to keep things neat and allow for future expansion
     !html
     <head>
       <title>Carl Fredricksen's Profile</title>
-      <link rel="stylesheet" type="text/css" href="css/main.css">
+      <link rel='stylesheet' type='text/css' href='css/main.css'>
     </head>
 
 ---
 
-# Introducing the `<div>` HTML tag
+# Introducing the `<div>` HTML element
 
     !html
     <body>
@@ -258,7 +259,7 @@ Use the following structure to keep things neat and allow for future expansion
 
 - `body` is called the _selector_
 - `{...}` contains properties and values being set
-- `#333333` and #a7a09a are RGB color codes
+- `#333333` and `#a7a09a` are RGB color codes
 
 ---
 
@@ -270,7 +271,7 @@ Use the following structure to keep things neat and allow for future expansion
 
 # The RGB color code
 
-<img src="slide_assets/img/440px-AdditiveColor.svg.png" alt="The RGB color model" style="width: 300px;"/>
+<img src='slide_assets/img/440px-AdditiveColor.svg.png' alt='The RGB color model' style='width: 300px;'/>
 
 - Uses a mixture of Red, Green and Blue components to represent colors
 - A number from 0 to 255 represents the 'intensity' of the component, written in base-16, i.e. from `00` to `ff`. _Quiz: how many colors can RGB represent?_
@@ -285,7 +286,7 @@ Use the following structure to keep things neat and allow for future expansion
 - 3 basic kinds:
     - by element type, e.g. `body { ... }`
     - by element id, e.g. `#header { ... }`
-    - by element class, e.g. `.someclass { ... }`
+    - by element class, e.g. `.someclass { ... }` (will see it in chapter 3)
 - Mix-and-match
     - example 1: `div#header { ... }`
     - example 2: `div h1 { ... }`
@@ -361,7 +362,7 @@ Let's give each `<div>` a different background color. This will help our eyes wh
 
 # The Box Model
 
-<img src="slide_assets/img/box-model-standard-small.png" alt="The Box Model" style="width: 500px;"/>
+<img src='slide_assets/img/box-model-standard-small.png' alt='The Box Model' style='width: 500px;'/>
 
 ---
 
@@ -412,6 +413,8 @@ Let's give each `<div>` a different background color. This will help our eyes wh
     }
 
 - `float` allows elements to be side by side, instead of one after another
+- Remove `display: block` and see what happens. [Explanation](https://stackoverflow.com/questions/31444891/mystery-white-space-underneath-image-tag/31445364#31445364)
+
 
 ---
 
@@ -557,8 +560,582 @@ Need to subtract left and right padding from width
 
 .fx: imageslide
 
----
+-------------------------------------------------------------------------------
 
 # 3. Javascript
+
+---
+
+# What is Javascript, and why?
+
+- The scripting language for the web, often used in browsers (called front-end scripting).
+
+- We can use Javascript to do many things
+    - add/change/remove content
+    - validate user input
+    - show/hide content with CSS
+    - create a game using HTML5 Canvas
+
+---
+
+# Directory structure
+
+Use the following structure to keep things neat and allow for future expansion
+
+    my_site_dir
+     |
+     |-- css
+     |    |
+     |    |-- main.css
+     |
+     |-- js
+     |    |
+     |    |-- main.js
+     |
+     |-- img
+     |    |
+     |    |-- mugshot.jpg
+     |
+     |-- index.html
+
+# Embedding Javascript
+
+Use the `<script>` tag (usually add it after the `</body>` tag)
+
+    !html
+    <html>
+      ...
+      <body>
+      ...
+      </body>
+      <script src='js/main.js'></script>
+    </html>
+
+---
+
+# Puppy face `/(^.^)\`
+
+`index.html`
+
+    !html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>My Javascript sandbox</title>
+      </head>
+      <body>
+        <div id='myDiv'></div>
+      </body>
+      <script src='js/main.js'></script>
+    </html>
+
+`css/main.js`
+
+    !javascript
+    var myDiv = document.getElementById('myDiv');
+    var myP = document.createElement('p');
+    myP.innerText = '/(^.^)\\';
+    myDiv.appendChild(myP);
+
+---
+
+![Puppy face](slide_assets/img/puppy-face.png)
+
+.fx: imageslide
+
+---
+
+# Puppy face `/(^.^)\` _what's going on?_
+
+1. In HTML, create an empty `<div>` and give it an unique ID `'myDiv'`
+2. In Javascript, retrieve (aka getting a handle of) this `<div>` using `document.getElementByID()`
+3. Create a new `<p>` element using `document.createElement()`
+4. Set this `<p>`'s `innerText` property to puppy face
+5. Add this `<p>` to `myDiv` as a child using `myDiv.appendChild()`
+
+### Javascript syntax
+- Use `var` to declare a variable
+- Use `=` to assign value to an variable or its property
+- Use single quote `'` (or double quote `"`) to enclose a string of characters
+
+---
+
+# Lots of puppies
+
+    !javascript
+    var myDiv = document.getElementById('myDiv');
+    for (var i = 0; i < 10; i++)
+    {
+      var myP = document.createElement('p');
+      myP.innerText = i + ': ' + '/(^.^)\\';
+      myDiv.appendChild(myP);
+    }
+
+### Javascript syntax
+- The for-loop:
+
+`for ( [Initial Expression]; [Condition]; [Step Expression]) { ACTION }`
+
+- `i++` is a shorthand for `i = i + 1`
+- `+` does addition when both operands are numbers; when any of them is a string, it does string _concatenation_
+
+---
+
+![Many puppies](slide_assets/img/many-puppies.png)
+
+.fx: imageslide
+
+---
+
+# Kitty in puppies
+
+    !javascript
+    var myDiv = document.getElementById('myDiv');
+    for (var i = 0; i < 10; i++)
+    {
+      var myP = document.createElement('p');
+      if (i === 5)
+      {
+        myP.innerText = i + ': ' + '=(^.^)=';
+      }
+      else
+      {
+        myP.innerText = i + ': ' + '/(^.^)\\';
+      }
+      myDiv.appendChild(myP);
+    }
+
+### Javascript syntax
+- The if-else-branches: `if ( [Condition] ) { Action A } else { Action B }`
+- `i++` is a shorthand for `i = i + 1`
+
+---
+
+![Kitty in puppies](slide_assets/img/kitty-in-puppies.png)
+
+.fx: imageslide
+
+---
+
+# Introducing booleans
+
+- A boolean is either `true` or `false`
+    - Real world example: light switch (on or off), yes/no question (yes or no)
+- [Condition] used in for-loop or if-else-branches must evaluate to a boolean
+- How to write a boolean expression?
+    - use comparison operators 
+    <table>
+    <tr><th>Operator</th><th>Meaning</th></tr>
+    <tr><td>a === b</td><td>Is a equal b?</td></tr>
+    <tr><td>a !=  b</td><td>Is a NOT equal b?</td></tr>
+    <tr><td>a  >  b</td><td>Is a greater than b?</td></tr>
+    <tr><td>a >=  b</td><td>Is a greater than or equal to b?</td></tr>
+    <tr><td>a  <  b</td><td>Is a less than b?</td></tr>
+    <tr><td>a <=  b</td><td>Is a less than or equal to b?</td></tr>
+    </table>
+    - `true` and `false` themselves are booleans
+
+---
+
+# Boolean operators
+
+- Boolean operators work on booleans just like `+` or `-` work on numbers
+  <table>
+    <tr><th>Name</th><th>Operator</th><th>Meaning</th></tr>
+    <tr><td>AND</td><td>a && b  </td><td>`true` if **both** a **and** b are true, `false` otherwise</td></tr>
+    <tr><td>OR</td><td>a || b  </td><td>`true` if **either** a **or** b is true, `false` otherwise </td></tr>
+    <tr><td>NOT</td><td>! a</td><td>`true` if a is `false`, `false` if a is `true`</td></tr>
+  </table>
+- Quiz: Evaluate the following boolean expressions, given `a=5` and `b=7`
+    - `a > 6 && b > 6`
+    - `a != 7 || b === 7`
+    - `(a + b) <= 12`
+    - `!((a - b) > 0)` 
+    - `a < 8 && b < 8 && (a + b) <= 12`
+
+---
+
+# Creating functions
+
+Why? To reuse code, and to reduce code complexity. 
+
+A function has 3 parts: a name, a list of parameters and a body.
+
+    !javascript
+    function drawPuppiesAndKitty(where, howMany)
+    {
+      var myDiv = document.getElementById(where);
+
+      for (var i = 0; i < howMany; i++)
+      {
+        var myP = document.createElement('p');
+        if (i === 5)
+        {
+          myP.innerText = i + ': ' + '=(^.^)=';
+        }
+        else
+        {
+          myP.innerText = i + ': ' + '/(^.^)\\';
+        }
+        myDiv.appendChild(myP);
+      }
+    }
+
+---
+
+# It's a Pawdemonium!
+
+HTML
+
+    !html
+    ...
+      <body>
+        <div id='myDiv'><p>Here are some furry friends</p></div>
+        <div id='myDiv2'><p>Another bunch of furry friends</p></div>
+      </body>
+    ...
+
+Javascript
+
+    !javascript
+    function drawPuppiesAndKitty(where, howMany)
+    {
+      ...
+    }
+
+    drawPuppiesAndKitty('myDiv', 7);
+    drawPuppiesAndKitty('myDiv2', 6);
+
+---
+
+![It's a Pawdemonium](slide_assets/img/its-a-pawdemonium.png)
+
+.fx: imageslide
+
+---
+
+# Introducing arrays
+
+Think of an array as a row of chairs with numbers (starting from 0) on them
+
+<img src='slide_assets/img/row-of-red-chairs.jpg' alt='A row of red chairs' style='width: 300px;'/>
+
+Let's create an array of pets:
+
+    !javascript
+    var pets = ['P', 'K', 'P', 'P', 'K', 'K']; // P for Puppy, K for Kitty
+
+You can _access_ each pet by specifying its _index_, like ` var secondPet = pets[1];`
+
+Can you write a function to draw an array of pets? _Hint: use a for-loop_
+
+---
+
+# Puppy or kitty, it's your call - 1
+
+Create a new `<div>` for this exercise
+
+    !html
+    <div id='myDiv3'><p>An array of pets</p></div>
+
+We will declare and call our new function this way
+
+    !javascript
+    function drawPets(where, arrayOffPets)
+    {
+      ...
+    }
+
+    drawPets('myDiv3', pets);
+
+---
+
+# Puppy or kitty, it's your call - 2
+
+    !javascript
+    function drawPets(where, arrayOfPets)
+    {
+      var myDiv = document.getElementById(where);
+      for (var i = 0; i < arrayOfPets.length; i ++)
+      {
+        var pet = arrayOfPets[i];
+        var myP = document.createElement('p');
+        switch (pet)
+        {
+          case 'P':
+            myP.innerText = i + ': ' + '/(^.^)\\';
+            break;
+          case 'K':
+            myP.innerText = i + ': ' + '=(^.^)=';
+            break;
+          default:
+            myP.innerText = i + ': ' + '???';
+            break;
+        }
+        myDiv.appendChild(myP);
+      }
+    }
+
+---
+
+![Puppy or kitty, it's your call](slide_assets/img/puppy-or-kitty.png)
+
+.fx: imageslide
+
+---
+
+# A puppy, kitty, or something else???
+
+`switch` is handy when there are more than 2 branches
+
+    !javascript
+    switch (VARIABLE)
+    {
+      case VALUE_1:
+        ACTION_1;
+        break;
+      case VALUE_2:
+        ACTION_2;
+        break;
+      ...
+      default:
+        ACTION_DEFAULT;
+        break;
+    }
+
+Try drawing this array of pets: `['P', 'K', 'P', 'P', 'K', 'F']`
+
+---
+
+# Hide-and-Seek!
+
+Allow user to play hide-and-seek with a chosen pet. You need the following:
+
+- a text box for user to enter the pet's number
+- a 'Hide-and-Seek` button
+
+HTML
+
+    !html
+    ...
+    <div>
+      <label>Which pet? 
+        <input id='petNumber' type='text' placeholder='Enter pet number'>
+      </label>
+      <button onclick='hideAndSeek("myDiv3")'>Hide-and-Seek</button>
+    </div>
+    ...
+
+---
+
+![Hide-and-Seek](slide_assets/img/hide-and-seek.png)
+
+.fx: imageslide
+
+---
+
+# Introducing events and event handlers
+
+- Analogy: You are home watching TV. The door bell rings, and you run downstairs to answer the door.
+    - Event: door bell rings
+    - Event handler: you answer the door
+- For the complete list of events that you can respond to, see [this page](https://www.w3schools.com/jsref/dom_obj_event.asp)
+- Event handlers are written in Javascript
+
+---
+
+# Naming the pets
+
+    !javascript
+    ...
+      for (var i = 0; i < arrayOfPets.length; i ++)
+      {
+        var pet = arrayOfPets[i];
+        var myP = document.createElement('p');
+        myP.id = where + '_' + i;
+        switch (pet)
+        {
+          case 'P':
+    ...
+
+Now, take a look in Chrome Developer Tools to inspect the generated content
+
+---
+
+![Naming the pets](slide_assets/img/naming-the-pets.png)
+
+.fx: imageslide
+
+---
+
+# The CSS Invisibility Cloak
+
+We will create a _class_ in CSS called `hidden`. Any HTML element belong to this class will become invisible. 
+
+In CSS, the selector for a _class_ is denoted by a `.` in front of its name.
+
+CSS
+
+    !css
+    .hidden
+    {
+      visibility: hidden;
+    }
+
+HTML
+
+    !html
+    <head>
+      <title>My Javascript sandbox</title>
+      <link rel="stylesheet" type="text/css" href="css/checkpoint_03.css">  
+    </head>
+
+
+---
+
+# Now you see me, now you don't
+
+    !javascript
+    function hideAndSeek(where)
+    {
+      var petNumberInput = document.getElementById('petNumber');
+      var petID = where + "_" + petNumberInput.value;
+      var petP = document.getElementById(petID);
+
+      if (petP.className != 'hidden')
+      {
+        petP.className = 'hidden';
+      }
+      else
+      {
+        petP.className = '';
+      }
+    }
+
+---
+
+![Now you see me, now you don't](slide_assets/img/now-you-see-me-now-you-dont.png)
+
+.fx: imageslide
+
+---
+
+# Validating input - 1
+
+Check if user has entered a number
+
+    !javascript
+    function hideAndSeek(where)
+    {
+      var petNumberInput = document.getElementById('petNumber');
+      if (isNaN(petNumberInput.value))
+      {
+        alert('Please enter a number!')
+        return;
+      }
+      ...
+    }
+
+---
+
+![Validating input - 1](slide_assets/img/validating-input-1.png)
+
+.fx: imageslide
+
+---
+
+# Validating input - 2
+
+Try pressing the button without entering anything. Can you fix it?
+
+    !javascript
+    function hideAndSeek(where)
+    {
+      var petNumberInput = document.getElementById('petNumber');
+      if (isNaN(petNumberInput.value) || petNumberInput.value === '')
+      {
+        alert('Please enter a number!')
+        return;
+      }
+      ...
+    }
+
+---
+
+![Validating input - 2](slide_assets/img/validating-input-2.png)
+
+.fx: imageslide
+
+---
+
+# Validating input - 3
+
+Try entering a pet number that doesn't exist. How do you fix it?
+
+    !javascript
+    function hideAndSeek(where)
+    {
+      ...
+      var petID = where + "_" + petNumberInput.value;
+      var petP = document.getElementById(petID);
+
+      if (petP === null)
+      {
+        alert("Pet number doesn't exist!");
+      }
+      ...
+    }
+
+---
+
+![Validating input - 3](slide_assets/img/validating-input-3.png)
+
+.fx: imageslide
+
+---
+
+# We are almost at the end
+
+### What did we learn in this course?
+- HTML
+    - `h1`, `p`, `em`, `strong`, `img`, `a`, `ul`, `ol`, `table`, `div`, `input`, `button`
+- CSS
+    - Embedding in HTML
+    - Selector syntax
+    - RGB color code
+    - Box Model
+    - Using `float` and `clear` to create multi-column layout
+    - Changing fonts, width
+    - Using `visibility` to hide/unhide content
+
+---
+
+# We are almost at the end
+
+### What did we learn in this course?
+- Javascript
+    - Embedding in HTML
+    - Accessing HTML elements by ID
+    - Creating HTML elements and attach to page
+    - for-loop, if-else, switch
+    - Booleans, comparison operators and boolean operators
+    - Functions, creating and calling
+    - Arrays, creating and accessing elements
+    - Events and event handlers
+    - Changing CSS class programmatically
+    - Validating user input
+
+---
+
+# What next?
+
+
+### Javascript/HTML5 Game Development
+
+### Web Development, Intermediate Level
+
+---
+
+# The END
 
 ---
