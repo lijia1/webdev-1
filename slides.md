@@ -250,6 +250,8 @@ Use the following structure to keep things neat and allow for future expansion
 
 # Changing colors
 
+CSS
+
     !css
     body 
     {
@@ -598,6 +600,8 @@ Use the following structure to keep things neat and allow for future expansion
      |
      |-- index.html
 
+---
+
 # Embedding Javascript
 
 Use the `<script>` tag (usually add it after the `</body>` tag)
@@ -629,7 +633,7 @@ Use the `<script>` tag (usually add it after the `</body>` tag)
       <script src='js/main.js'></script>
     </html>
 
-`css/main.js`
+`js/main.js`
 
     !javascript
     var myDiv = document.getElementById('myDiv');
@@ -841,7 +845,7 @@ Create a new `<div>` for this exercise
 We will declare and call our new function this way
 
     !javascript
-    function drawPets(where, arrayOffPets)
+    function drawPets(where, arrayOfPets)
     {
       ...
     }
@@ -1082,6 +1086,7 @@ Try entering a pet number that doesn't exist. How do you fix it?
       if (petP === null)
       {
         alert("Pet number doesn't exist!");
+        return;
       }
       ...
     }
