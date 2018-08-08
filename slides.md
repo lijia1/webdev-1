@@ -514,7 +514,7 @@ Add paddings to make things look less crammed
 
 ---
 
-# Finak touches - 1 _what's wrong?_
+# Final touches - 1 _what's wrong?_
 
 Need to subtract left and right padding from width
 
